@@ -1,0 +1,33 @@
+{% extends 'login.html' %}
+{% block title %}Race{% endblock %}
+{% block content %}
+<div class="toplinks">
+    <a class="logout" style="float:right" href="{{url_for('main_bp.logout')}}">Logout</p></a>
+    <a class="logout2" style="float:left" href="{{url_for('admin_bp.index')}}">Return to Homepage</a>
+    <h2 style="text-align:center; margin-top:30px">View Races</h2>
+</div>
+<br>
+<br>
+{% endblock %}
+{% block pending %}
+<table>
+    <tr>
+        <td><b>Race Name</b></td>
+        <td><b>Term</b></td> 
+        <td><b>Candidate Count</b></td>
+        <td><b>StartDate</b></td>
+        <td><b>EndDate</b></td>
+    </tr>
+
+    {% for race in races %}
+        <tr>
+           <td>{{race[0]}}</td>
+           <td>{{race[1]}}</td> 
+           <td>{{race[2]}}</td>
+           <td>{{race[3]}}</td>
+           <td>{{race[4]}}</td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+    {% endblock %}

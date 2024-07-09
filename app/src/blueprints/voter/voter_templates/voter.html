@@ -1,0 +1,34 @@
+{% extends 'login.html' %}
+{% block title %}Voter{% endblock %}
+{% block content %}
+    <h1>Voter Dashboard</h1>
+    <p>Welcome
+        {% if current_user.is_authenticated %}
+            {{ current_user.email }}!
+        {% endif %}
+    </p>
+    {% if current_user.status == "Pending" %}
+        <p>Your status is still pending. Watch your inbox for an update.</p>
+    {% endif %}
+    {% if current_user.status == "Denied" %}
+        <p>Your status was denied. Contact administration if you believe this was an error.</p>
+    {% endif %}
+    {% if current_user.status == "Approved" %}
+        <p>Your status was approved.</p>
+        <!--page content for approved voter here-->
+        {% for election in elections %} 
+            {% if current_user.zip|int == election[2]|int %}
+                <p>{{election[0]}} <a href="{{url_for('main_bp.ballot', currentElection=election[0], currentUser=current_user.email)}}">Vote</a></p>
+            {% endif %}
+        {% endfor %}
+
+</br>
+        <p>
+            {% if current_user.is_authenticated %}
+            <p><b>Summary of votes:</b> <a href="{{url_for('voter_bp.summary')}}">Vote Summary</p></a>
+            {% endif %}
+        </p>
+    {% endif %}
+
+    <a class="logout"href="{{url_for('main_bp.logout')}}">Logout</p></a>
+{% endblock %}

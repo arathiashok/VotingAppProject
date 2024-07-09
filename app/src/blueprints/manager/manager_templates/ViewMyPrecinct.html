@@ -1,0 +1,37 @@
+{% extends 'login.html' %}
+{% block title %}Precinct{% endblock %}
+{% block content %}
+<div class="toplinks">
+    <a class="logout" style="float:right" href="{{url_for('main_bp.logout')}}">Logout</p></a>
+    <a class="logout2" style="float:left" href="{{url_for('manager_bp.index')}}">Return to Homepage</a>
+    <h2 style="text-align:center; margin-top:30px">View My Precinct Details</h2>
+</div>
+<br>
+<br>
+{% endblock %}
+{% block pending %}
+<table>
+    <tr>
+        <td><b>Precinct ID</b></td>
+        <td><b>Precinct Name</b></td> 
+        <td><b>Candidate Count</b></td>
+        <td><b>State</b></td>
+        <td><b>Zip</b></td>
+        <td><b>ZipPlus4Start</b></td>
+        <td><b>ZipPlus4End</b></td>
+    </tr>
+
+    {% for precinct in precincts %}
+        <tr>
+           <td>{{precinct[0]}}</td>
+           <td>{{precinct[1]}}</td> 
+           <td>{{precinct[2]}}</td>
+           <td>{{precinct[3]}}</td>
+           <td>{{precinct[4]}}</td>
+           <td>{{precinct[5]}}</td>
+           <td>{{precinct[6]}}</td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+    {% endblock %}

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% from 'bootstrap5/form.html' import render_form %} 
+
+
+{% block title %}Add Race{% endblock %}
+
+
+{% block content %}
+<div class="toplinks">
+        <a class="logout" style="float:right" href="{{url_for('main_bp.logout')}}">Logout</p></a>
+        <a class="logout2" style="float:left" href="{{url_for('admin_bp.index')}}">Return to Homepage</a>
+        <h2 style="text-align:center; margin-top:30px">Add New Electoral Race</h2>
+    </div>
+        {{ render_form(form) }} 
+{% endblock %}

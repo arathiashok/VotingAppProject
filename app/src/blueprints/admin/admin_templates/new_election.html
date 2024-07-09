@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block title %}New Election{% endblock %}
+
+{% block content %}
+<p class="title">New Election</p>
+{% if error %}
+    <ul class="errors">
+        <li>{{ error }}</li>
+    </ul>
+{% endif %}
+
+<p>{{error}}</p>
+
+<a href="{{url_for('admin_bp.view_elections')}}">Elections Home</p></a>
+
+{{ render_form(form) }}
+
+{% endblock %}

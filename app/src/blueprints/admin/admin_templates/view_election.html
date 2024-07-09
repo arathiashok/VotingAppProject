@@ -1,0 +1,70 @@
+{% extends 'login.html' %}
+{% block title %}Election{% endblock %}
+{% block content %}
+<div class="toplinks">
+    <a class="logout" style="float:right" href="{{url_for('main_bp.logout')}}">Logout</p></a>
+    <a class="logout2" style="float:left" href="{{url_for('admin_bp.view_elections')}}">Elections Home</a>
+    <h2 style="text-align:center; margin-top:30px">Admin Election Dashboard</h2>
+</div>
+
+<h1>{{election}}</h1> 
+<div style="overflow:auto">
+<a class="button" style="float:left" href="{{url_for('admin_bp.update_election', election_title=election_title)}}">Update Election</a>
+<a class="button" style="float:right" href="{{url_for('admin_bp.delete_election', election_title=election_title)}}">Delete Election</a>
+</div>
+{% endblock %}
+
+{% block pending %}
+<h3 style="text-align:center">Election Dates</h3> <p><a class="logout" style="padding-top:0px" href = "{{url_for('admin_bp.new_election_date', election_title=election_title)}}">New Date</a></p>
+<table>
+    <!-- https://stackoverflow.com/questions/33865138/how-to-print-out-query-of-tuples-stored-in-a-list-on-html-page -->
+        <tr>
+            <td>Election Title</td>
+            <td>Start Date</td> 
+            <td>End Date</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </tr>
+    
+        {% for date in dates %}
+            <tr>
+               <td>{{date[1]}}</td>
+               <td>{{date[2]}}</td>
+               <td>{{date[3]}}</td>
+               <td><a href="{{url_for('admin_bp.update_election_date',election_title=date[1], election_date_id=date[0])}}">Update Date</a></td>
+               <td><a href="{{url_for('admin_bp.delete_election_date', election_title=date[1], election_date_id=date[0])}}">Delete Date</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h3 style="text-align:center">Election Candidates</h3> <p><a class="logout" style="padding-top:0px" href = "{{url_for('admin_bp.new_candidate', election_title=election_title)}}">New Candidate</a></p>
+    <table>
+        <!-- https://stackoverflow.com/questions/33865138/how-to-print-out-query-of-tuples-stored-in-a-list-on-html-page -->
+            <tr>
+                <td>Election Title</td>
+                <td>Electoral Race</td> 
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Update</td>
+                <td>Delete</td>
+            </tr>
+        
+            {% for candidate in candidates %}
+                <tr>
+                   <td>{{candidate[1]}}</td>
+                   <td>{{candidate[2]}}</td>
+                   <td>{{candidate[3]}}</td>
+                   <td>{{candidate[4]}}</td>
+                   <td><a href="{{url_for('admin_bp.update_candidate',election_title=candidate[1], candidate_id=candidate[0])}}">Update Candidate</a></td>
+                   <td><a href="{{url_for('admin_bp.delete_candidate', election_title=candidate[1], candidate_id=candidate[0])}}">Delete Candidate</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+
+
+
+
+
+
+    {% endblock %}

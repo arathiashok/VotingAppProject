@@ -1,0 +1,6 @@
+{% extends 'login.html' %}
+{% block title %}Candidate Info{% endblock %}
+{% block content %}
+    <h1>{{currentCandidate[3][1:-1]}} {{currentCandidate[4][1:-1]}}</h1>
+    <p>{{currentCandidate[5][1:-1]}}</p>
+{% endblock %}

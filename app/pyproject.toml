@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "team5-voting"
+version = "0.1.0"
+description = "Team5 Voting created for University of Iowa Software Engineering Fundamentals"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.3.3"
+mysql-connector-python = "^8.1.0"
+pytest = "^7.4.2"
+flask-wtf = "^1.2.1"
+email-validator = "^2.0.0.post2"
+bcrypt = "^4.0.1"
+pytest-flask = "^1.2.0"
+bootstrap-flask = "^2.3.0"
+flask-login = "^0.6.2"
+flask-mail = "^0.9.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+pythonpath = [
+  ".", "src"
+]

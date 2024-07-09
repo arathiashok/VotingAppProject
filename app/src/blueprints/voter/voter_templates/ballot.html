@@ -1,0 +1,18 @@
+{% extends 'login.html' %}
+{% block title %}Ballot{% endblock %}
+{% block content %}
+    {% if voted %}
+        <p>{{message}}</p>
+    {% else %}
+    <h1>{{election}} Ballot</h1>
+    <form action="{{ url_for('main_bp.castVote', currentElection=election, currentUser=current_user.email) }}" method="post">
+        {% for candidate in candidates %}
+            {% if candidate[1]== election %}
+                <input type="radio" name="candidate" value={{candidate[0]}}>{{candidate[3]}} {{candidate[4]}} <a href="{{url_for('main_bp.candidate', currentCandidate=candidate)}}">Read More</a></input> <br>
+            {% endif %}
+        {% endfor %}
+        <input type="submit">
+        {{ result }}
+    </form>
+    {% endif %}
+{% endblock %}

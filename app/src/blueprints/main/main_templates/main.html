@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<title>Main Homepage</title>
+    
+</head>
+<body>
+    <a href="{{url_for('main_bp.index')}}"><img src="{{url_for('static', filename='VoteUSA.png')}}" alt = 'VoteUSA' class="voteUSAmain"/></a>
+    <div clas="content">
+        <p class="intro">
+            Welcome to VoteUSA, a digital voting system for the United States of America. If you are a 
+            first time voter, click the "Register" button below. If you are a returning voter, an admin, 
+            or a poll manager, click the "Login" button. 
+        </p>
+        <a class="mainlink" href="{{url_for('main_bp.login')}}">Login</a><br>
+        <a class="mainlink" href="{{url_for('main_bp.new')}}">Register</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends 'login.html' %}
+
+{% block title %}Elections{% endblock %}
+{% block content %}
+<div class="toplinks">
+    <a class="logout" style="float:right" href="{{url_for('main_bp.logout')}}">Logout</p></a>
+    <a class="logout2" style="float:left" href="{{url_for('admin_bp.index')}}">Return to Homepage</a>
+    <h2 style="text-align:center; margin-top:30px">Admin Election Dashboard</h2>
+</div>
+<a class="button" style="padding-bottom:0px;margin-bottom:20px;" href="{{url_for('admin_bp.new_election')}}">New Election</p></a>
+{% endblock %}
+{% block pending %}
+<table>
+<!-- https://stackoverflow.com/questions/33865138/how-to-print-out-query-of-tuples-stored-in-a-list-on-html-page -->
+    <tr>
+        <td>Election Title</td>
+        <td>Natural Geography</td> 
+        <td>Electoral Constituency</td>
+        <td>Public Status</td>
+        <td>View Election</td>
+        <td>Update Election</td>
+        <td>Delete Election</td>
+    </tr>
+
+    {% for election in elections %}
+        <tr>
+           <td>{{election[0]}}</td>
+           <td>{{election[1]}}</td> 
+           <td>{{election[2]}}</td>
+           <td>{{election[3]}}</td>
+           <td><a class="logout" style="padding-top:0px" href="{{url_for('admin_bp.view_election', election_title=election[0])}}">View</a></td>
+           <td><a class="logout" style="padding-top:0px" href="{{url_for('admin_bp.update_election', election_title=election[0])}}">Update</a></td>
+           <td><a class="logout" style="padding-top:0px" href="{{url_for('admin_bp.delete_election', election_title=election[0])}}">Delete</a></td>
+        </tr>
+    {% endfor %}
+</table>
+    {% endblock %}

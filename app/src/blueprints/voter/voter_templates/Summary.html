@@ -1,0 +1,29 @@
+
+
+{% extends 'login.html' %}
+{% block title %}Summary{% endblock %}
+{% block content %}
+<div class="toplinks">
+    <a class="logout" style="float:right" href="{{url_for('main_bp.logout')}}">Logout</p></a>
+    <a class="logout2" style="float:left" href="{{url_for('voter_bp.index')}}">Return to Homepage</a>
+    <h2 style="text-align:center; margin-top:30px">Summary of votes made for current Active Elections!'</h2>
+</div>
+<br>
+<br>
+{% endblock %}
+{% block pending %}
+<table>
+    <tr>
+        <td><b>Race Name</b></td>
+        <td><b>Candidate Name</b></td>
+    </tr>
+
+    {% for row in summary %}
+        <tr>
+           <td>{{row[0]}}</td>
+           <td>{{row[1]}}</td> 
+        </tr>
+    {% endfor %}
+</table>
+<br>
+    {% endblock %}

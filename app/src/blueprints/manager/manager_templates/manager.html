@@ -1,0 +1,26 @@
+{% extends 'login.html' %}
+{% block title %}Manager{% endblock %}
+{% block content %}
+    <h1>Manager Dashboard</h1>
+    <p>Welcome
+        {% if current_user.is_authenticated %}
+            {{ current_user.email }} !
+        {% endif %}
+    </p>
+    <p>
+        {% if current_user.is_authenticated %}
+        <a class="button" href="{{url_for('manager_bp.manager_search_voters')}}">Search Voters</p></a>
+        {% endif %}
+    </p>
+
+    <p>
+        {% if current_user.is_authenticated %}
+        <a class="button" href="{{url_for('manager_bp.manager_view_precinct')}}">View My Precinct</p></a>
+        {% endif %}
+    </p>
+
+    {% endblock %}
+
+    {% block logout %}
+        <a class="logout" href="{{url_for('main_bp.logout')}}">Logout</p></a>
+    {% endblock %}

@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block title %}Update Election{% endblock %}
+
+{% block content %}
+<div class="toplinks">
+    <a class="logout" style="float:right" href="{{url_for('main_bp.logout')}}">Logout</p></a>
+    <a class="logout2" style="float:left" href="{{url_for('admin_bp.view_elections')}}">Elections Home</a>
+    <h2 style="text-align:center; margin-top:30px">Update Election</h2>
+</div>
+
+<h1>Update Election {{election_title}}</h1>
+<p>{{error}}</p>
+
+{{ render_form(form) }}
+
+{% endblock %}

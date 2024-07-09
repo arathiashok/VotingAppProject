@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<title>{% block title %}{% endblock %}
+    </title>
+    
+</head>
+<body>
+<div class="top">
+    <a class="voteUSALink" href="{{url_for('main_bp.index')}}"><img src="{{url_for('static', filename='VoteUSA.png')}}" class="voteUSA"/></a>
+</div>
+<body>
+    <div clas="content" style="width:600px; margin:auto">{% block content %}{% endblock %}</div>
+	<div clas="pending" style="width:100%; margin:auto">{% block pending %}{% endblock %}</div>
+	<div clas="search" style="width:600px; margin:auto">{% block search %}{% endblock %}</div>
+	<div clas="logout" style="width:100%; margin:auto">{% block logout %}{% endblock %}</div>
+
+</body>
+</html>

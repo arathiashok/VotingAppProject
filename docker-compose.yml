@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  voting-app:
+    container_name: voting-app
+    build: ./app
+    restart: always
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./app:/app
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+    
+networks:
+  default:
+    name: flask-backend
